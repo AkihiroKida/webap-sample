@@ -1,0 +1,40 @@
+version: '3'
+services:
+  # frontend:
+  #   build:
+  #     context: .
+  #     dockerfile: ./docker/frontend/Dockerfile
+  #   container_name: frontend_container
+  #   tty: true
+  #   volumes:
+  #     - ./react-app/react-app:/app/react
+  #   command: sh -c "cd /app/react && yarn install && yarn start"
+  #   ports:
+  #     - 3000:3000
+  backend:
+    build:
+      context: .
+      dockerfile: ./docker/backend/Dockerfile
+    container_name: backend_container
+    ports:
+      - 8000:8000
+    tty: true
+    # volumes:
+    #   - ./go-app:/app/go
+  # database:
+  #   build:
+  #     context: .
+  #     dockerfile: ./docker/database/Dockerfile
+  #   container_name: database_container
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: root
+  #     MYSQL_DATABASE: react-go-app
+  #     TZ: 'Asia/Tokyo'
+  #   volumes:
+  #     - ./docker/database/initdb.d:/docker-entrypoint-initdb.d
+  #     - ./docker/database/conf.d:/etc/mysql/conf.d
+  #     - ./docker/database/data:/var/lib/mysql
+  #   ports:
+  #   - 3306:3306
+  #   links:
+  #     - backend
