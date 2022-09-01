@@ -11,6 +11,8 @@ import (
 	"go-app/adapters/gateways"
 	"go-app/adapters/presenters"
 	"go-app/usecases/user"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func Serve(addr string) {
