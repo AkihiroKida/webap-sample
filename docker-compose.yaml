@@ -14,27 +14,25 @@ services:
   backend:
     build:
       context: .
-      dockerfile: ./docker/backend/Dockerfile
+      dockerfile: ./docker/backend/Dockerfile_local
     container_name: backend_container
     ports:
-      - 8000:8000
+      - 8080:8080
     tty: true
-    # volumes:
-    #   - ./go-app:/app/go
-  # database:
-  #   build:
-  #     context: .
-  #     dockerfile: ./docker/database/Dockerfile
-  #   container_name: database_container
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: root
-  #     MYSQL_DATABASE: react-go-app
-  #     TZ: 'Asia/Tokyo'
-  #   volumes:
-  #     - ./docker/database/initdb.d:/docker-entrypoint-initdb.d
-  #     - ./docker/database/conf.d:/etc/mysql/conf.d
-  #     - ./docker/database/data:/var/lib/mysql
-  #   ports:
-  #   - 3306:3306
-  #   links:
-  #     - backend
+  database:
+    build:
+      context: .
+      dockerfile: ./docker/database/Dockerfile
+    container_name: database_container
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: webap-sample
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - ./docker/database/initdb.d:/docker-entrypoint-initdb.d
+      - ./docker/database/conf.d:/etc/mysql/conf.d
+      - ./docker/database/data:/var/lib/mysql
+    ports:
+    - 3306:3306
+    links:
+      - backend

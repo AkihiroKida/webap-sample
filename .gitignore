@@ -46,7 +46,7 @@ sketch
 
 ### VisualStudioCode ###
 .vscode/*
-!.vscode/settings.json
+.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
@@ -69,4 +69,6 @@ sketch
 # Ignore code-workspaces
 *.code-workspace
 
+### Project ###
+/docker/database/data/*
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,go,react
